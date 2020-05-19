@@ -1,0 +1,8 @@
+//
+// Created by sarah on 19/05/2020.
+//
+
+#ifndef EOSIO_ELEMENTAL_CARDGAME_H
+#define EOSIO_ELEMENTAL_CARDGAME_H
+
+#endif //EOSIO_ELEMENTAL_CARDGAME_H
