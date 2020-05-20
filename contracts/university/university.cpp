@@ -9,6 +9,7 @@ void university::addstudent(name username) {
     if (student_iterator == _students.end()) {
         student_iterator = _students.emplace(username,  [&](auto& new_student) {
             new_student.username = username;
+            new_student.grade = 4;
         });
     }
 }
