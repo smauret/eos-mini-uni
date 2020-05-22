@@ -31,4 +31,7 @@ public:
 
     [[eosio::action]]
     void addstudent(name username);
+
+    [[eosio::action]]
+    void removesdt(name username);
 };

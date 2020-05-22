@@ -28,6 +28,16 @@
             ]
         },
         {
+            "name": "removesdt",
+            "base": "",
+            "fields": [
+                {
+                    "name": "username",
+                    "type": "name"
+                }
+            ]
+        },
+        {
             "name": "student_info",
             "base": "",
             "fields": [
@@ -46,6 +56,11 @@
         {
             "name": "addstudent",
             "type": "addstudent",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "removesdt",
+            "type": "removesdt",
             "ricardian_contract": ""
         }
     ],

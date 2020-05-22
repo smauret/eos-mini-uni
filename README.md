@@ -29,6 +29,7 @@
       --http-validate-host=false \
       --verbose-http-errors >> nodeos.log 2>&1 &
     ```
+  You can use `tail -f nodeos.log` to make sure your EOS blockchain is working correctly.
   
 ## Contract deployment
 
@@ -55,4 +56,6 @@
     cleos push action university addstudent '["university"]' -p university@active
     ```
   
+* In the `ApiService.js` you need to replace the `privateKey` with your private key, to find your privateKey you can use `cleos wallet private_keys`   
+
 * Go to your browser and check that the table is displayed

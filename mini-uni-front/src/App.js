@@ -2,23 +2,38 @@ import React, {useEffect, useState} from 'react';
 import { ApiService } from 'services';
 
 function App() {
-  const [studentsTable, setStudentsTable] = useState({})
-  const [error, setError] = useState('no error')
+    const [studentsTable, setStudentsTable] = useState({})
+    const [professorsTable, setProfessorsTable] = useState({})
 
   useEffect( ()=>{
-        ApiService.getStudentsTable()
+        ApiService.getTable("students")
         .then((res) => {
           setStudentsTable(res);
         })
         .catch(err => {
-          setError(err.toString());
+            console.log('err: ',err)
         });
   })
+    useEffect( ()=>{
+        ApiService.getTable("professors")
+            .then((res) => {
+                setProfessorsTable(res);
+            })
+            .catch(err => {
+                console.log('err: ',err)
+            });
+    })
+
+    const addStudent = () => {
+        ApiService.addStudent("fdqkbeofnies")
+    }
 
   return (
     <div>
-      students: {JSON.stringify(studentsTable)}
-      error: {error}
+        <div>students: {JSON.stringify(studentsTable)}</div>
+        <div>professors: {JSON.stringify(professorsTable)}</div>
+
+        <button onClick={addStudent}> add fdqkbeofnies</button>
 
     </div>
   );
