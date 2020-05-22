@@ -1,0 +1,114 @@
+{
+    "____comment": "This file was generated with eosio-abigen. DO NOT EDIT ",
+    "version": "eosio::abi/1.1",
+    "types": [],
+    "structs": [
+        {
+            "name": "constract_info",
+            "base": "",
+            "fields": [
+                {
+                    "name": "jobtitle",
+                    "type": "string"
+                },
+                {
+                    "name": "company",
+                    "type": "name"
+                },
+                {
+                    "name": "salary",
+                    "type": "uint64"
+                },
+                {
+                    "name": "startdate",
+                    "type": "string"
+                },
+                {
+                    "name": "address",
+                    "type": "string"
+                },
+                {
+                    "name": "trialperiod",
+                    "type": "uint64"
+                },
+                {
+                    "name": "employee",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "get",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "setdetails",
+            "base": "",
+            "fields": [
+                {
+                    "name": "jobtitle",
+                    "type": "string"
+                },
+                {
+                    "name": "company",
+                    "type": "name"
+                },
+                {
+                    "name": "salary",
+                    "type": "uint64"
+                },
+                {
+                    "name": "startdate",
+                    "type": "string"
+                },
+                {
+                    "name": "address",
+                    "type": "string"
+                },
+                {
+                    "name": "trialperiod",
+                    "type": "uint64"
+                }
+            ]
+        },
+        {
+            "name": "setemployee",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                }
+            ]
+        }
+    ],
+    "actions": [
+        {
+            "name": "get",
+            "type": "get",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setdetails",
+            "type": "setdetails",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "setemployee",
+            "type": "setemployee",
+            "ricardian_contract": ""
+        }
+    ],
+    "tables": [
+        {
+            "name": "constract_info",
+            "type": "constract_info",
+            "index_type": "i64",
+            "key_names": [],
+            "key_types": []
+        }
+    ],
+    "ricardian_clauses": [],
+    "variants": []
+}

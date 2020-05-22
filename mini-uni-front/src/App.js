@@ -6,7 +6,7 @@ function App() {
     const [professorsTable, setProfessorsTable] = useState({})
 
   useEffect( ()=>{
-        ApiService.getTable("students")
+        ApiService.getTableStudents()
         .then((res) => {
           setStudentsTable(res);
         })
@@ -15,7 +15,7 @@ function App() {
         });
   }, [])
     useEffect( ()=>{
-        ApiService.getTable("professors")
+        ApiService.getTableProfessors()
             .then((res) => {
                 setProfessorsTable(res);
             })
@@ -25,12 +25,17 @@ function App() {
     },[])
 
     const upsertStudent = () => {
-        ApiService.upsertStudent({"user":"fdqkbeofnies", "grade":1})
+        ApiService.upsertStudent({"user":"fdqkbeofnies", "grade":5})
     }
 
     const upsertProf = () => {
         ApiService.upsertProf({"user":"lsqkeotnnpyu", "subject":"web"})
     }
+
+    const getJobDetails = () => {
+        ApiService.getJobDetails({})
+    }
+
 
   return (
     <div>
@@ -39,6 +44,7 @@ function App() {
 
         <button onClick={upsertStudent}> upsert a student</button>
         <button onClick={upsertProf}> upsert a professor</button>
+        <button onClick={getJobDetails}> see job</button>
 
     </div>
   );
