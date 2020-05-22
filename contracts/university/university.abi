@@ -4,16 +4,6 @@
     "types": [],
     "structs": [
         {
-            "name": "addstudent",
-            "base": "",
-            "fields": [
-                {
-                    "name": "username",
-                    "type": "name"
-                }
-            ]
-        },
-        {
             "name": "professor_info",
             "base": "",
             "fields": [
@@ -28,11 +18,21 @@
             ]
         },
         {
+            "name": "removepf",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                }
+            ]
+        },
+        {
             "name": "removesdt",
             "base": "",
             "fields": [
                 {
-                    "name": "username",
+                    "name": "user",
                     "type": "name"
                 }
             ]
@@ -50,17 +50,55 @@
                     "type": "uint16"
                 }
             ]
+        },
+        {
+            "name": "upsertpf",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "subject",
+                    "type": "name"
+                }
+            ]
+        },
+        {
+            "name": "upsertsdt",
+            "base": "",
+            "fields": [
+                {
+                    "name": "user",
+                    "type": "name"
+                },
+                {
+                    "name": "grade",
+                    "type": "uint16"
+                }
+            ]
         }
     ],
     "actions": [
         {
-            "name": "addstudent",
-            "type": "addstudent",
+            "name": "removepf",
+            "type": "removepf",
             "ricardian_contract": ""
         },
         {
             "name": "removesdt",
             "type": "removesdt",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "upsertpf",
+            "type": "upsertpf",
+            "ricardian_contract": ""
+        },
+        {
+            "name": "upsertsdt",
+            "type": "upsertsdt",
             "ricardian_contract": ""
         }
     ],

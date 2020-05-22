@@ -1,24 +1,60 @@
 #include "university.h"
 
-void university::addstudent(name username) {
-    // Ensure this action is authorized by the uni owner i.e. main professor
+void university::upsertsdt(name user, uint16_t grade) {
     require_auth(get_self());
 
-    // Create a record in the table if the student doesn't exist in our app yet
-    auto student_iterator = _students.find(username.value);
-    if (student_iterator == _students.end()) {
-        student_iterator = _students.emplace(username,  [&](auto& new_student) {
-            new_student.username = username;
-            new_student.grade = 4;
+    students_table students( get_self(), get_first_receiver().value );
+    auto iterator = students.find(user.value);
+    if( iterator == students.end() )
+    {
+        students.emplace(get_self(), [&]( auto& row ) {
+            row.username = user;
+            row.grade = grade;
         });
-
+    }
+    else {
+        students.modify(iterator, get_self(), [&]( auto& row ) {
+            row.username = user;
+            row.grade = grade;
+        });
     }
 }
 
-void university::removesdt(name username) {
+
+void university::removesdt(name user) {
     require_auth(get_self());
 
-    auto student_iterator = _students.find(username.value);
-    check(student_iterator != _students.end(), "Record does not exist");
-    _students.erase(student_iterator);
+    students_table students( get_self(), get_first_receiver().value );
+    auto iterator = students.find(user.value);
+    check(iterator != students.end(), "Record does not exist");
+    students.erase(iterator);
+}
+
+void university::upsertpf(name user, name subject) {
+    require_auth(get_self());
+
+    professors_table professors( get_self(), get_first_receiver().value );
+    auto iterator = professors.find(user.value);
+    if( iterator == professors.end() )
+    {
+        professors.emplace(get_self(), [&]( auto& row ) {
+            row.username = user;
+            row.subject = subject;
+        });
+    }
+    else {
+        professors.modify(iterator, get_self(), [&]( auto& row ) {
+            row.username = user;
+            row.subject = subject;
+        });
+    }
+}
+
+void university::removepf(name user) {
+    require_auth(get_self());
+
+    professors_table professors( get_self(), get_first_receiver().value );
+    auto iterator = professors.find(user.value);
+    check(iterator != professors.end(), "Record does not exist");
+    professors.erase(iterator);
 }

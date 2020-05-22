@@ -13,7 +13,7 @@ function App() {
         .catch(err => {
             console.log('err: ',err)
         });
-  })
+  }, [])
     useEffect( ()=>{
         ApiService.getTable("professors")
             .then((res) => {
@@ -22,10 +22,14 @@ function App() {
             .catch(err => {
                 console.log('err: ',err)
             });
-    })
+    },[])
 
-    const addStudent = () => {
-        ApiService.addStudent("fdqkbeofnies")
+    const upsertStudent = () => {
+        ApiService.upsertStudent({"user":"ygurhufawhcq", "grade":1})
+    }
+
+    const upsertProf = () => {
+        ApiService.upsertProf({"user":"lsqkeotnnpyu", "subject":"web"})
     }
 
   return (
@@ -33,7 +37,8 @@ function App() {
         <div>students: {JSON.stringify(studentsTable)}</div>
         <div>professors: {JSON.stringify(professorsTable)}</div>
 
-        <button onClick={addStudent}> add fdqkbeofnies</button>
+        <button onClick={upsertStudent}> upsert a student</button>
+        <button onClick={upsertProf}> upsert a professor</button>
 
     </div>
   );
