@@ -15,7 +15,7 @@ async function takeAction(action, dataValue) {
                 account: process.env.REACT_APP_EOS_CONTRACT_NAME,
                 name: action,
                 authorization: [{
-                    actor: 'university',
+                    actor: process.env.REACT_APP_EOS_CONTRACT_NAME,
                     permission: 'active',
                 }],
                 data: dataValue,
@@ -45,14 +45,21 @@ class ApiService {
         }
     }
 
-    static async addStudent (dataValue){
+    static async upsertStudent (dataValue){
         try{
-            takeAction("addstudent", dataValue)
+            takeAction("upsertsdt", dataValue)
         }catch (err){
             console.log(err)
         }
     }
 
+    static async upsertProf (dataValue){
+        try{
+            takeAction("upsertpf", dataValue)
+        }catch (err){
+            console.log(err)
+        }
+    }
 }
 
 export default ApiService;

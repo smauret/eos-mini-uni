@@ -21,17 +21,18 @@ private:
     typedef eosio::multi_index<name("professors"), professor_info> professors_table;
     typedef eosio::multi_index<name("students"), student_info> students_table;
 
-    professors_table _professors;
-    students_table _students;
-
 public:
-    university( name receiver, name code, datastream<const char*> ds ):contract(receiver, code, ds),
-                                                                       _professors(receiver, receiver.value),
-                                                                       _students(receiver, receiver.value){}
+    university( name receiver, name code, datastream<const char*> ds ):contract(receiver, code, ds){}
 
     [[eosio::action]]
-    void addstudent(name username);
+    void upsertsdt(name user, uint16_t grade);
 
     [[eosio::action]]
-    void removesdt(name username);
+    void removesdt(name user);
+
+    [[eosio::action]]
+    void upsertpf(name user, name subject);
+
+    [[eosio::action]]
+    void removepf(name user);
 };
