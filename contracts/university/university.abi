@@ -47,7 +47,7 @@
                 },
                 {
                     "name": "grade",
-                    "type": "uint16"
+                    "type": "uint64"
                 }
             ]
         },

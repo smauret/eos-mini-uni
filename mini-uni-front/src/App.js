@@ -25,7 +25,7 @@ function App() {
     },[])
 
     const upsertStudent = () => {
-        ApiService.upsertStudent({"user":"ygurhufawhcq", "grade":1})
+        ApiService.upsertStudent({"user":"fdqkbeofnies", "grade":1})
     }
 
     const upsertProf = () => {

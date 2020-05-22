@@ -38,6 +38,8 @@ class ApiService {
                 "code": process.env.REACT_APP_EOS_CONTRACT_NAME,    // contract who owns the table
                 "scope": process.env.REACT_APP_EOS_CONTRACT_NAME,   // scope of the table
                 "table": table,    // name of the table as specified by the contract abi
+                "key_type": "i64",
+                "index_position": 2
             });
             return result;
         } catch (err) {
