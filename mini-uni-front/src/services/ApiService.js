@@ -114,7 +114,7 @@ class ApiService {
                 "json": true,
                 "code": process.env.REACT_APP_EOS_CONTRACT_NAME_JOB1,    // contract who owns the table
                 "scope": process.env.REACT_APP_EOS_CONTRACT_NAME_JOB1,   // scope of the table
-                "table": "constract_info",    // name of the table as specified by the contract abi
+                "table": "jobinfo",    // name of the table as specified by the contract abi
             });
             return result;
         } catch (err) {
