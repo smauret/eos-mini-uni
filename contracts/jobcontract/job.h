@@ -6,7 +6,7 @@ using namespace eosio;
 
 class [[eosio::contract]] job : public eosio::contract {
 private:
-    struct [[eosio::table]] constract_info {
+    struct [[eosio::table]] jobinfo {
         string jobtitle;
         name company;
         uint64_t salary;
@@ -16,13 +16,13 @@ private:
         name employee;
     }tt;
 
-    using singleton_type = eosio::singleton<"singletonjob"_n, constract_info>;
+    using singleton_type = eosio::singleton<"singletonjob"_n, jobinfo>;
     singleton_type singleton_instance;
 
 public:
     job( name receiver, name code, datastream<const char*> ds ):contract(receiver, code, ds), singleton_instance(receiver, receiver.value){}
 
-    [[eosio::action]] constract_info get();
+    [[eosio::action]] jobinfo get();
 
     [[eosio::action]]
     void setdetails(string jobtitle,name company, uint64_t salary, string startdate, string address, uint64_t trialperiod);

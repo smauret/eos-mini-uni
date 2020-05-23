@@ -28,7 +28,7 @@ void job::setemployee(name user){
     }
 }
 
-job::constract_info job::get( ) {
+job::jobinfo job::get( ) {
     if (singleton_instance.exists()) {
         eosio::print(
                 "Job: ",

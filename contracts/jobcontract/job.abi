@@ -4,7 +4,12 @@
     "types": [],
     "structs": [
         {
-            "name": "constract_info",
+            "name": "get",
+            "base": "",
+            "fields": []
+        },
+        {
+            "name": "jobinfo",
             "base": "",
             "fields": [
                 {
@@ -36,11 +41,6 @@
                     "type": "name"
                 }
             ]
-        },
-        {
-            "name": "get",
-            "base": "",
-            "fields": []
         },
         {
             "name": "setdetails",
@@ -102,8 +102,8 @@
     ],
     "tables": [
         {
-            "name": "constract_info",
-            "type": "constract_info",
+            "name": "jobinfo",
+            "type": "jobinfo",
             "index_type": "i64",
             "key_names": [],
             "key_types": []
