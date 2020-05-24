@@ -13,6 +13,7 @@ void job::setdetails(string jobtitle,name company, uint64_t salary, string start
     entry_stored.startdate = startdate;
     entry_stored.address = address;
     entry_stored.trialperiod = trialperiod;
+    entry_stored.employee = name("");
     singleton_instance.set(entry_stored, get_self());
 }
 
@@ -26,35 +27,4 @@ void job::setemployee(name user){
         entry_stored.employee = user;
         singleton_instance.set(entry_stored, get_self());
     }
-}
-
-job::jobinfo job::get( ) {
-    if (singleton_instance.exists()) {
-        eosio::print(
-                "Job: ",
-                name{singleton_instance.get().jobtitle},
-                "\n"
-                " Company ",
-                singleton_instance.get().company.value,
-                "\n",
-                "Salary: ",
-                name{singleton_instance.get().salary},
-                "\n",
-                "Start date: ",
-                name{singleton_instance.get().startdate},
-                "\n",
-                "Address: ",
-                name{singleton_instance.get().address},
-                "\n",
-                "Trial period: ",
-                name{singleton_instance.get().address},
-                "\n",
-                "Employee: ",
-                name{singleton_instance.get().employee.value},
-                "\n");
-        return singleton_instance.get();
-    } else {
-        eosio::print("Singleton is empty\n");
-    }
-    return {};
 }

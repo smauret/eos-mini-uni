@@ -4,11 +4,6 @@
     "types": [],
     "structs": [
         {
-            "name": "get",
-            "base": "",
-            "fields": []
-        },
-        {
             "name": "jobinfo",
             "base": "",
             "fields": [
@@ -84,11 +79,6 @@
         }
     ],
     "actions": [
-        {
-            "name": "get",
-            "type": "get",
-            "ricardian_contract": ""
-        },
         {
             "name": "setdetails",
             "type": "setdetails",
