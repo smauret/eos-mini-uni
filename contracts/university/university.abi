@@ -4,6 +4,11 @@
     "types": [],
     "structs": [
         {
+            "name": "closeuni",
+            "base": "",
+            "fields": []
+        },
+        {
             "name": "professor_info",
             "base": "",
             "fields": [
@@ -81,6 +86,11 @@
         }
     ],
     "actions": [
+        {
+            "name": "closeuni",
+            "type": "closeuni",
+            "ricardian_contract": ""
+        },
         {
             "name": "removepf",
             "type": "removepf",

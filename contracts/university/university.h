@@ -41,6 +41,9 @@ public:
     [[eosio::action]]
     void removepf(name user);
 
+    [[eosio::action]]
+    void closeuni();
+
     void setemployee(name user) {
         job::set_emp_action setemployee("igloojungled"_n, {get_self(), "active"_n});
         setemployee.send(user);
