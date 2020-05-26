@@ -11,14 +11,12 @@ void university::upsertsdt(name user, uint16_t grade) {
             row.username = user;
             row.grade = grade;
         });
-        university::setemployee(user);
     }
     else {
         students.modify(iterator, get_self(), [&]( auto& row ) {
             row.username = user;
             row.grade = grade;
         });
-        university::setemployee(user);
     }
 }
 
@@ -59,4 +57,12 @@ void university::removepf(name user) {
     auto iterator = professors.find(user.value);
     check(iterator != professors.end(), "Record does not exist");
     professors.erase(iterator);
+}
+
+void university::closeuni() {
+    require_auth(get_self());
+    students_table students( get_self(), get_first_receiver().value );
+    auto idx = students.get_index<"bygrade"_n>();
+    auto iterator = idx.rbegin();
+    university::setemployee(name(iterator->username));
 }
