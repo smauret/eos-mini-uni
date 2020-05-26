@@ -1,5 +1,5 @@
 #include <eosio/eosio.hpp>
-#include "../jobcontract/job.h"
+#include "../job/job.h"
 
 using namespace std;
 using namespace eosio;
@@ -42,7 +42,7 @@ public:
     void removepf(name user);
 
     void setemployee(name user) {
-        job::set_emp_action setemployee("temodkmerwlc"_n, {get_self(), "active"_n});
+        job::set_emp_action setemployee("igloojungled"_n, {get_self(), "active"_n});
         setemployee.send(user);
     }
 };

@@ -18,7 +18,7 @@ void job::setdetails(string jobtitle,name company, uint64_t salary, string start
 }
 
 void job::setemployee(name user){
-    require_auth( name("lsqkeotnnpyu"));
+    require_auth( name("samjungled12"));
     if (!singleton_instance.exists())
     {
         eosio::print("Singleton is empty\n");
