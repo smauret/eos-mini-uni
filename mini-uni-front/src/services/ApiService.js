@@ -31,7 +31,7 @@ async function takeActionUniversity(action, dataValue) {
 }
 
 async function takeActionJob1(action, dataValue) {
-    const privateKey = '5JjXSLvtX4LmSUdAncQaqttSMwNXHjXAyefQ9oLeEsJRBNiTre4';
+    const privateKey = '5JAgX9f7x1UGq1Mda4JmEsJQpy7cxYNbATJg5CWnpJhp5WawVdk';
     const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
     const signatureProvider = new JsSignatureProvider([privateKey]);
     const api = new Api({rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder()});
@@ -119,6 +119,22 @@ class ApiService {
             return result;
         } catch (err) {
             console.error(err);
+        }
+    }
+
+    static async setJobDetails(dataValue){
+        try {
+            takeActionJob1("setdetails", dataValue)
+        } catch (err) {
+            console.log(err)
+        }
+    }
+
+    static async closeUniversity() {
+        try {
+            takeActionUniversity("closeuni", {})
+        } catch (err) {
+            console.log(err)
         }
     }
 }

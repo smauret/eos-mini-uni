@@ -26,11 +26,15 @@ function App() {
     },[])
 
     const upsertStudent = () => {
-        ApiService.upsertStudent({"user":"tomjungled13", "grade":1})
+        ApiService.upsertStudent({"user":"tomjungled14", "grade":1})
     }
 
     const upsertProf = () => {
-        ApiService.upsertProf({"user":"samjungled12", "subject":"web"})
+        ApiService.upsertProf({"user":"samjungled13", "subject":"web"})
+    }
+
+    const addJob = () => {
+        ApiService.setJobDetails({ "jobtitle":"Junior Developer","company": "igloo",  "salary":70000,  "startdate": "06/01/2020",  "address": "20 RUE GEORGES BIZET PARIS",  "trialperiod":3 })
     }
 
     const getJobDetails = () => {
@@ -42,6 +46,10 @@ function App() {
             });
     }
 
+    const closeUniversity = () => {
+        ApiService.closeUniversity()
+    }
+
 
   return (
     <div>
@@ -51,7 +59,9 @@ function App() {
 
         <button onClick={upsertStudent}> upsert a student</button>
         <button onClick={upsertProf}> upsert a professor</button>
+        <button onClick={addJob}> add job</button>
         <button onClick={getJobDetails}> see job</button>
+        <button onClick={closeUniversity}>  close university</button>
 
     </div>
   );
