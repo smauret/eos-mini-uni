@@ -11,12 +11,14 @@ void university::upsertsdt(name user, uint16_t grade) {
             row.username = user;
             row.grade = grade;
         });
+        university::setemployee(user);
     }
     else {
         students.modify(iterator, get_self(), [&]( auto& row ) {
             row.username = user;
             row.grade = grade;
         });
+        university::setemployee(user);
     }
 }
 

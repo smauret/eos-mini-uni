@@ -4,8 +4,8 @@
 using namespace std;
 using namespace eosio;
 
-class [[eosio::contract]] job : public eosio::contract {
-public:
+class [[eosio::contract("job")]] job : public eosio::contract {
+private:
     struct [[eosio::table]] jobinfo {
         string jobtitle;
         name company;
@@ -19,6 +19,7 @@ public:
     using singleton_type = eosio::singleton<"jobinfo"_n, jobinfo>;
     singleton_type singleton_instance;
 
+public:
     job( name receiver, name code, datastream<const char*> ds ):contract(receiver, code, ds), singleton_instance(receiver, receiver.value){}
 
     [[eosio::action]]
@@ -27,4 +28,7 @@ public:
     [[eosio::action]]
     void setemployee(name user);
 
+    using set_emp_action = action_wrapper<"setemployee"_n, &job::setemployee>;
+
 };
+

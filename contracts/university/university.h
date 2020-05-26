@@ -1,9 +1,10 @@
 #include <eosio/eosio.hpp>
+#include "../jobcontract/job.h"
 
 using namespace std;
 using namespace eosio;
 
-class [[eosio::contract]] university : public eosio::contract {
+class [[eosio::contract("university")]] university : public eosio::contract {
 private:
     struct [[eosio::table]] professor_info {
         name username;
@@ -39,4 +40,9 @@ public:
 
     [[eosio::action]]
     void removepf(name user);
+
+    void setemployee(name user) {
+        job::set_emp_action setemployee("temodkmerwlc"_n, {get_self(), "active"_n});
+        setemployee.send(user);
+    }
 };

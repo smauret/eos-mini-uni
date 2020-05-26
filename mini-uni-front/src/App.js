@@ -4,6 +4,7 @@ import { ApiService } from 'services';
 function App() {
     const [studentsTable, setStudentsTable] = useState({})
     const [professorsTable, setProfessorsTable] = useState({})
+    const [jobDetails, setJobDetails] = useState({})
 
   useEffect( ()=>{
         ApiService.getTableStudents()
@@ -33,14 +34,20 @@ function App() {
     }
 
     const getJobDetails = () => {
-        ApiService.getJobDetails({})
+        ApiService.getJobDetails().then((res) => {
+            setJobDetails(res);
+        })
+            .catch(err => {
+                console.log('err: ',err)
+            });
     }
 
 
   return (
     <div>
-        <div>students: {JSON.stringify(studentsTable)}</div>
-        <div>professors: {JSON.stringify(professorsTable)}</div>
+        <div style={{margin:20}}>students: {JSON.stringify(studentsTable)}</div>
+        <div style={{margin:20}}>professors: {JSON.stringify(professorsTable)}</div>
+        <div style={{margin:20}}>job: {JSON.stringify(jobDetails)}</div>
 
         <button onClick={upsertStudent}> upsert a student</button>
         <button onClick={upsertProf}> upsert a professor</button>

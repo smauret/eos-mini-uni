@@ -1,12 +1,12 @@
-import { Api, JsonRpc } from 'eosjs';
-import { JsSignatureProvider } from 'eosjs/dist/eosjs-jssig'
+import {Api, JsonRpc} from 'eosjs';
+import {JsSignatureProvider} from 'eosjs/dist/eosjs-jssig'
 
 // Main action call to blockchain
 async function takeActionUniversity(action, dataValue) {
     const privateKey = '5KGpcDeuZzik9mPriBMhEZJPW9cpNjTTVQgdL2hVnpQKFd3u4tn';
     const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
     const signatureProvider = new JsSignatureProvider([privateKey]);
-    const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+    const api = new Api({rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder()});
 
     // Main call to blockchain after setting action, account_name and data
     try {
@@ -17,7 +17,11 @@ async function takeActionUniversity(action, dataValue) {
                 authorization: [{
                     actor: process.env.REACT_APP_EOS_CONTRACT_NAME_UNIVERSITY,
                     permission: 'active',
-                }],
+                },
+                    {
+                        actor: process.env.REACT_APP_EOS_CONTRACT_NAME_UNIVERSITY,
+                        permission: 'eosio.code',
+                    }],
                 data: dataValue,
             }]
         }, {
@@ -34,7 +38,7 @@ async function takeActionJob1(action, dataValue) {
     const privateKey = '5JjXSLvtX4LmSUdAncQaqttSMwNXHjXAyefQ9oLeEsJRBNiTre4';
     const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
     const signatureProvider = new JsSignatureProvider([privateKey]);
-    const api = new Api({ rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder() });
+    const api = new Api({rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder()});
 
     // Main call to blockchain after setting action, account_name and data
     try {
@@ -91,23 +95,23 @@ class ApiService {
         }
     }
 
-    static async upsertStudent (dataValue){
-        try{
+    static async upsertStudent(dataValue) {
+        try {
             takeActionUniversity("upsertsdt", dataValue)
-        }catch (err){
+        } catch (err) {
             console.log(err)
         }
     }
 
-    static async upsertProf (dataValue){
-        try{
+    static async upsertProf(dataValue) {
+        try {
             takeActionUniversity("upsertpf", dataValue)
-        }catch (err){
+        } catch (err) {
             console.log(err)
         }
     }
 
-    static async getJobDetails (){
+    static async getJobDetails() {
         try {
             const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
             const result = await rpc.get_table_rows({
