@@ -26,11 +26,11 @@ function App() {
     },[])
 
     const upsertStudent = () => {
-        ApiService.upsertStudent({"user":"fdqkbeofnies", "grade":5})
+        ApiService.upsertStudent({"user":"tomjungled13", "grade":1})
     }
 
     const upsertProf = () => {
-        ApiService.upsertProf({"user":"lsqkeotnnpyu", "subject":"web"})
+        ApiService.upsertProf({"user":"samjungled12", "subject":"web"})
     }
 
     const getJobDetails = () => {

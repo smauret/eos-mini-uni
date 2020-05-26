@@ -3,7 +3,7 @@ import {JsSignatureProvider} from 'eosjs/dist/eosjs-jssig'
 
 // Main action call to blockchain
 async function takeActionUniversity(action, dataValue) {
-    const privateKey = '5KGpcDeuZzik9mPriBMhEZJPW9cpNjTTVQgdL2hVnpQKFd3u4tn';
+    const privateKey = process.env.REACT_APP_EOS_PRIVATE_KEY_UNIVERSITY;
     const rpc = new JsonRpc(process.env.REACT_APP_EOS_HTTP_ENDPOINT);
     const signatureProvider = new JsSignatureProvider([privateKey]);
     const api = new Api({rpc, signatureProvider, textDecoder: new TextDecoder(), textEncoder: new TextEncoder()});
@@ -16,12 +16,8 @@ async function takeActionUniversity(action, dataValue) {
                 name: action,
                 authorization: [{
                     actor: process.env.REACT_APP_EOS_CONTRACT_NAME_UNIVERSITY,
-                    permission: 'active',
-                },
-                    {
-                        actor: process.env.REACT_APP_EOS_CONTRACT_NAME_UNIVERSITY,
-                        permission: 'eosio.code',
-                    }],
+                    permission: 'owner',
+                }],
                 data: dataValue,
             }]
         }, {
