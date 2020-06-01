@@ -11,6 +11,9 @@
    ```
 
 * Create an account for the contract university on [jungle testnet](https://monitor.jungletestnet.io/) (we called it samjungled12)
+and give it permission eosio.code 
+
+`cleos -u http://jungle2.cryptolions.io:80 set account permission samjungled12 active '{"threshold":1,"keys":[{"permission":{"key":"your_key","permission":"active"},"weight":1}],"accounts":[{"permission":{"actor":"samjungled12","permission":"eosio.code"},"weight":1}]}' owner -p samjungled12@active`
 
 * Create an account for the contract job on [jungle testnet](https://monitor.jungletestnet.io/) (we called it igloojungled)
 
