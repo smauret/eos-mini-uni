@@ -1,61 +1,31 @@
-## Getting started
+## Contracts deployment
 
-* Follow this [link](https://developers.eos.io/welcome/latest/getting-started/development-environment/introduction) for setup until section 2.1 "Hello World Contract"
-
-* Clone this repo
-
-* In the ``mini-uni-front`` folder
-     ```
-      npm install
-      npm start
-     ```
-* Open terminal and start keos
-    ```
-      keosd &
-    ```
-
-* Start nodeos
-    ```
-      nodeos -e -p eosio \
-      --plugin eosio::producer_plugin \
-      --plugin eosio::producer_api_plugin \
-      --plugin eosio::chain_api_plugin \
-      --plugin eosio::http_plugin \
-      --plugin eosio::history_plugin \
-      --plugin eosio::history_api_plugin \
-      --filter-on="*" \
-      --access-control-allow-origin='*' \
-      --contracts-console \
-      --http-validate-host=false \
-      --verbose-http-errors >> nodeos.log 2>&1 &
-    ```
-  You can use `tail -f nodeos.log` to make sure your EOS blockchain is working correctly.
-  
-## Contract deployment
-
-* Go to `contracts\university\` in terminal and in compile with
+* Go to `contracts\university\` in terminal and compile with
     ```
     eosio-cpp -o university.wasm university.cpp
    ```
+  
+* Go to `contracts\job\` in terminal and compile with
+    ```
+    eosio-cpp -o job.wasm job.cpp
+   ```
 
-* Create an account for the contract (make your wallet is unlock - `cleos wallet unlock`)    
-    ```
-    cleos create account eosio university public_key
-    ```
+* Create an account for the contract university on [jungle testnet](https://monitor.jungletestnet.io/) (we called it samjungled12)
 
-* Finally deploy the contract
-    ```
-    cleos set contract university /home/name/Documents/dev/eos-mini-uni/contracts/university --abi university.abi -p university@active
-    ```  
+* Create an account for the contract job on [jungle testnet](https://monitor.jungletestnet.io/) (we called it igloojungled)
+
+* Make sure you import your private key in wallets and that the wallets are unlock before deployment
+
+* Finally deploy the contracts
+   ```
+   cleos -u http://jungle2.cryptolions.io:80 set contract samjungled12 /contracts/university --abi university.abi -p samjungled12@owner
+   ``` 
+  ```
+  cleos -u http://jungle2.cryptolions.io:80 set contract igloojungled /contracts/job --abi job.abi -p igloojungled@owner
+  ``` 
+  
   
 ## Test
 
-* Add a student to the table
+Use the front-end of this [repo](https://github.com/davthedev/mroo-front) filling the .env with your credentials.
 
-    ```
-    cleos push action university addstudent '["university"]' -p university@active
-    ```
-  
-* In the `ApiService.js` you need to replace the `privateKey` with your private key, to find your privateKey you can use `cleos wallet private_keys`   
-
-* Go to your browser and check that the table is displayed
